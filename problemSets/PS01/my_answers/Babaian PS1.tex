@@ -1,0 +1,92 @@
+\documentclass[12pt,letterpaper]{article}
+\usepackage{graphicx,textcomp}
+\usepackage{natbib}
+\usepackage{setspace}
+\usepackage{fullpage}
+\usepackage{color}
+\usepackage[reqno]{amsmath}
+\usepackage{amsthm}
+\usepackage{fancyvrb}
+\usepackage{amssymb,enumerate}
+\usepackage[all]{xy}
+\usepackage{endnotes}
+\usepackage{lscape}
+\newtheorem{com}{Comment}
+\usepackage{float}
+\usepackage{hyperref}
+\newtheorem{lem} {Lemma}
+\newtheorem{prop}{Proposition}
+\newtheorem{thm}{Theorem}
+\newtheorem{defn}{Definition}
+\newtheorem{cor}{Corollary}
+\newtheorem{obs}{Observation}
+\usepackage[compact]{titlesec}
+\usepackage{dcolumn}
+\usepackage{tikz}
+\usetikzlibrary{arrows}
+\usepackage{multirow}
+\usepackage{xcolor}
+\newcolumntype{.}{D{.}{.}{-1}}
+\newcolumntype{d}[1]{D{.}{.}{#1}}
+\definecolor{light-gray}{gray}{0.65}
+\usepackage{url}
+\usepackage{listings}
+\usepackage{color}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+	backgroundcolor=\color{backcolour},   
+	commentstyle=\color{codegreen},
+	keywordstyle=\color{magenta},
+	numberstyle=\tiny\color{codegray},
+	stringstyle=\color{codepurple},
+	basicstyle=\footnotesize,
+	breakatwhitespace=false,         
+	breaklines=true,                 
+	captionpos=b,                    
+	keepspaces=true,                 
+	numbers=left,                    
+	numbersep=5pt,                  
+	showspaces=false,                
+	showstringspaces=false,
+	showtabs=false,                  
+	tabsize=2
+}
+\lstset{style=mystyle}
+\newcommand{\Sref}[1]{Section~\ref{#1}}
+\newtheorem{hyp}{Hypothesis}
+
+\title{Problem Set 1}
+\date{Due: February 11, 2024}
+\author{Valeriia Babaian: 23360186}
+
+
+\begin{document}
+	\maketitle
+
+	\vspace{.25cm}
+\section*{Question 1} 
+\vspace{.25cm}
+
+The code shown below first generates 1,000 Cauchy random variables and obtains their empirical distribution, as indicated. Then, test statistic is calculated according to the given instructions, with ECDF standing for empirical and  \textt{pnorm(data)} for theoretical distribution. D equals to $\approx$ 0.135. \textit{p-value} calculated from the Kolmogorov- Smirnoff CDF is low, allowing us to reject $H_0$ stating that the empirical distribution corresponds to the expected theoretical one with the mean equal to 0 and standard deviation equal to 1. Taken peculiarities of Cauchy variables, such as heavier tails, this result is not surprising.
+
+
+\lstinputlisting[language=R, firstline=40, lastline=56]{Babaian PS1.R}  
+
+\vspace{3in}
+
+\section*{Question 2}
+
+The code below estimates an OLS regression that uses BFGS optimization and compares it with regular \texttt{lm} results obtained in R. First, a function minimizing squared residuals is created (rss) to be used as a function in the BFGS optimization. The outcome of the function is the vector \texttt{beta} with two values: the intercept and the predictor coefficient. 
+
+
+\lstinputlisting[language=R, firstline=62, lastline=82]{Babaian PS1.R}  
+
+
+Best parameters obtained within BFGS optimization shown in the code output in the rows \textnumero{17} and 21 are almost identical to each other. 
+
+\end{document}
